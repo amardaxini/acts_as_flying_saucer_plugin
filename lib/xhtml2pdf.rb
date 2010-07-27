@@ -29,26 +29,15 @@ module ActsAsFlyingSaucer
       else
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
 
-        class_path = ".:#{java_dir}/bin"
-
-        Dir.glob("#{java_dir}/jar/*.jar") do |jar|
-          class_path << "#{options[:classpath_separator]}#{jar}"
-        end
-        
-        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
+        class_path = ".:#{java_dir}/jar/acts_as_flying_saucer.jar"
+        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
         system(command)
       end
      end
       def self.encrypt_pdf(options,output_file_name,password)
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
-
-        class_path = ".:#{java_dir}/bin"
-
-        Dir.glob("#{java_dir}/jar/*.jar") do |jar|
-          class_path << "#{options[:classpath_separator]}#{jar}"
-        end
-
-        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} encryptPdf #{options[:output_file]} #{output_file_name} #{password}"
+        class_path = ".:#{java_dir}/jar/acts_as_flying_saucer.jar"
+        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.encryptPdf #{options[:output_file]} #{output_file_name} #{password}"
         system(command)
       end
    
