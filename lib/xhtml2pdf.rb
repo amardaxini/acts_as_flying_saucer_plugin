@@ -28,18 +28,27 @@ module ActsAsFlyingSaucer
         os.close
       else
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
-
         class_path = ".:#{java_dir}/jar/acts_as_flying_saucer.jar"
-        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
+
+        if options[:nailgun]
+	        command = "#{Nailgun::NgCommand::NGPATH} Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
+        else
+          command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
+        end
         system(command)
       end
      end
       def self.encrypt_pdf(options,output_file_name,password)
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
         class_path = ".:#{java_dir}/jar/acts_as_flying_saucer.jar"
-        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.encryptPdf #{options[:output_file]} #{output_file_name} #{password}"
+        if options[:nailgun]
+	        command = "#{Nailgun::NgCommand::NGPATH} encryptPdf #{options[:input_file]} #{options[:output_file]}"
+	      else  
+	        command = "#{options[:java_bin]} -Xmx512m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.encryptPdf #{options[:output_file]} #{output_file_name} #{password}"
+	      end
         system(command)
       end
    
   end
 end
+

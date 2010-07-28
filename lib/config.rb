@@ -10,7 +10,8 @@ module ActsAsFlyingSaucer
       :java_bin => "java",
       :classpath_separator => ':',
       :tmp_path => "/tmp",
-      :run_mode => :once
+      :run_mode => :once,
+      :nailgun=> false
     }
     
     cattr_accessor :options

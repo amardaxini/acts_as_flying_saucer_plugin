@@ -104,8 +104,29 @@ These are the default settings which can be overwritten in your enviroment confi
       :java_bin => "java",          # java binary
       :classpath_separator => ':',  # classpath separator. unixes system use ':' and windows ';'
       :tmp_path => "/tmp",          # path where temporary files will be stored
+      :nailgun =>false
     }
     
+    
+Advance Configuration
+-------------
+Now acts_as_flying_saucer call java each time on creating pdf this will speed down speed of generaion of pdf.To overcome this start nailgun server that reads data from specific port and rendered pdf.so there is no need to launch the jvm everytime a new pdf is generated.
+
+So to start nailgun with acts_as_flying_saucer plugin:
+
+ ./script/plugin install git://github.com/amardaxini/nailgun.git
+
+Start nailgun server.Before starting nailgun server make sure that your classpath environment variable set and point to jre/lib
+
+ script/nailgun start
+
+Generate pdf with nailgun you have to overwrite Configuration make nailgun option to true
+
+Now after making nailgun option true run
+ script/flying_saucer_nailgun
+
+Now you are ready with nailgun. 
+
 
 
 
