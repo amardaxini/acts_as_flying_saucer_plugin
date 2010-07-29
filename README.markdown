@@ -123,7 +123,9 @@ Start nailgun server.Before starting nailgun server make sure that your **classp
 <code>
  script/nailgun start
 </code> 
-
+<code>
+  rake nailgun
+</code>
 Generate pdf with nailgun you have to overwrite Configuration make **nailgun option to true**
 Now after making nailgun option true run
 
