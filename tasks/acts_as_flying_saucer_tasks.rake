@@ -1,4 +1,7 @@
-# desc "Explaining what the task does"
-# task :acts_as_flying_saucer do
-#   # Task goes here
-# end
+ desc "Generate nailgun script"
+ task :nailgun do
+    dest_file = File.expand_path(File.join(File.dirname(__FILE__),'..','..','..','..', "script", 'flying_saucer_nailgun'))
+		src_file = File.expand_path(File.join(File.dirname(__FILE__),'..','lib','generator' ,'flying_saucer_nailgun'))
+		FileUtils.cp_r(src_file, dest_file)
+		File.chmod(0755,dest_file)
+ end

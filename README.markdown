@@ -127,6 +127,8 @@ Start nailgun server.Before starting nailgun server make sure that your **classp
 Generate pdf with nailgun you have to overwrite Configuration make **nailgun option to true**
 Now after making nailgun option true run
 
+<code>rake acts_as_flying_saucer</code>
+
 <code>
  script/flying_saucer_nailgun
 </code>
