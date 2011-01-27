@@ -47,11 +47,11 @@ module ActsAsFlyingSaucer
         # saving the file
         tmp_dir = ActsAsFlyingSaucer::Config.options[:tmp_path]
         html_digest = Digest::MD5.hexdigest(html)
-        input_file = "#{tmp_dir}/#{html_digest}.html"
+        input_file =File.join(File.expand_path("#{tmp_dir}"),"#{html_digest}.html")
         
         logger.debug("html file: #{input_file}")
       
-        output_file = (options.has_key?(:pdf_file)) ? options[:pdf_file] : "#{tmp_dir}/#{html_digest}.pdf"
+        output_file = (options.has_key?(:pdf_file)) ? options[:pdf_file] : File.join(File.expand_path("#{tmp_dir}"),"#{html_digest}.pdf")
         password = (options.has_key?(:password)) ? options[:password] : ""  
         
        
