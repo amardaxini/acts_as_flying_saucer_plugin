@@ -28,7 +28,7 @@ module ActsAsFlyingSaucer
         os.close
       else
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
-        class_path = ".#{options[:classpath_separator]}#{java_dir}/jar/acts_as_flying_saucer.jar"
+        class_path = "'.#{options[:classpath_separator]}#{java_dir}/jar/acts_as_flying_saucer.jar'"
 
         if options[:nailgun]
 	        command = "#{Nailgun::NgCommand::NGPATH} Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
@@ -40,7 +40,7 @@ module ActsAsFlyingSaucer
      end
       def self.encrypt_pdf(options,output_file_name,password)
         java_dir = File.join(File.expand_path(File.dirname(__FILE__)), "java")
-        class_path = ".#{options[:classpath_separator]}#{java_dir}/jar/acts_as_flying_saucer.jar"
+        class_path = "'.#{options[:classpath_separator]}#{java_dir}/jar/acts_as_flying_saucer.jar'"
         if options[:nailgun]
 	        command = "#{Nailgun::NgCommand::NGPATH} encryptPdf #{options[:input_file]} #{options[:output_file]}"
 	      else  
